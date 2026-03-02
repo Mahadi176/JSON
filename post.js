@@ -9,15 +9,21 @@ const loadPost = () => {
 }
 
 const displayPost = (posts) => {
+// 1.get the container and empty the container 
+        const postsContainer = document.getElementById('posts-container')
+        postsContainer.innerHTML = "";
 
-// 1.get the container 
-const postContainer = document.getElementById('post-Container')
-        console.log(postContainer)
-
-    posts.forEach((post) => {
-        const li = document.createElement('li')
-        li.innerText = post.title
-        postContainer.appendChild(li)
-        
+    posts.forEach(post => {
+        // 2. create element 
+        const postCard = document.createElement('div')
+        postCard.innerHTML =` 
+                <div class="post-card">
+        <h1>${post.title}</h1>
+        <p>${post.body}</p>
+    </div>
+        `
+        // 3. add to the container 
+        postsContainer.appendChild(postCard)
     })
 }
+loadPost()
